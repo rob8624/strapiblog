@@ -4,7 +4,6 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 import { fileURLToPath, URL } from 'url'
-
 import tailwindcss from '@tailwindcss/vite'
 import { nitro } from 'nitro/vite'
 
@@ -16,8 +15,13 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
-    nitro(),
-    // this is the plugin that enables path aliases
+    nitro({
+      preset: 'node-server',
+      runtimeConfig: {
+        host: '0.0.0.0',
+        port: process.env.PORT || 8080,
+      }
+    }),
     viteTsConfigPaths({
       projects: ['./tsconfig.json'],
     }),
