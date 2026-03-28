@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Header": {
+      "type": "component",
+      "component": "ui.header",
+      "repeatable": false
+    },
+    "Hero": {
+      "type": "component",
+      "component": "ui.hero",
+      "repeatable": true
+    },
+    "Footer": {
+      "type": "component",
+      "component": "ui.footer",
+      "repeatable": false
+    }
+  }
+}
