@@ -16,9 +16,8 @@ export interface UiHeader extends Struct.ComponentSchema {
     displayName: 'Header';
   };
   attributes: {
-    Links: Schema.Attribute.Blocks;
+    Link: Schema.Attribute.Component<'ui.link', true>;
     Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Title: Schema.Attribute.String;
   };
 }
 
@@ -32,12 +31,24 @@ export interface UiHero extends Struct.ComponentSchema {
   };
 }
 
+export interface UiLink extends Struct.ComponentSchema {
+  collectionName: 'components_ui_links';
+  info: {
+    displayName: 'Link';
+  };
+  attributes: {
+    Label: Schema.Attribute.String;
+    URL: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'ui.footer': UiFooter;
       'ui.header': UiHeader;
       'ui.hero': UiHero;
+      'ui.link': UiLink;
     }
   }
 }

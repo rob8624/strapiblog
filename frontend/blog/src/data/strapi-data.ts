@@ -2,12 +2,12 @@
 import { createServerFn } from '@tanstack/react-start'
 import { getStrapiURL } from '@/lib/utils'
 
-export const testStrapiConnection = createServerFn({
+export const indexPageData = createServerFn({
   method: 'GET',
 }).handler(async () => {
   const url = getStrapiURL()
 
-  const res = await fetch(`${url}/api/homepage?populate=*`)
+  const res = await fetch(`${url}/api/homepage?populate[Header][populate]=*`)
 
   if (!res.ok) {
     throw new Error(`Strapi error: ${res.status}`)

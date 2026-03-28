@@ -37,8 +37,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        
-        {children}
+        <div className="w-screen h-dvh bg-[#ece2d0] flex justify-center">
+          {children}
+        </div>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
