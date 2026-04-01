@@ -6,7 +6,7 @@ export interface UiFooter extends Struct.ComponentSchema {
     displayName: 'Footer';
   };
   attributes: {
-    Text: Schema.Attribute.String;
+    text: Schema.Attribute.String;
   };
 }
 
@@ -16,8 +16,9 @@ export interface UiHeader extends Struct.ComponentSchema {
     displayName: 'Header';
   };
   attributes: {
-    Link: Schema.Attribute.Component<'ui.link', true>;
-    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Schema.Attribute.Component<'ui.link', true>;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -37,8 +38,8 @@ export interface UiLink extends Struct.ComponentSchema {
     displayName: 'Link';
   };
   attributes: {
-    Label: Schema.Attribute.String;
-    URL: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    url: Schema.Attribute.String;
   };
 }
 

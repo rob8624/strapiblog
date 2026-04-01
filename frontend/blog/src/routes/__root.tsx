@@ -1,11 +1,37 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { strapiAPI} from '../data/server-functions'
+
+
+
 
 
 import appCss from '../styles.css?url'
+import type { FooterData, HeaderData } from '@/types'
+import { Header } from '@/components/header'
+import { Container } from '@/components/layout/container'
+import { Footer } from '@/components/footer'
+
+
+interface RootLoaderData {
+  header: HeaderData
+  title: string
+  description: string
+  footer: FooterData
+}
 
 export const Route = createRootRoute({
+  loader: async () => {
+    const globalData = await strapiAPI.global.getGlobalData()
+    return {
+      header: globalData.data.header,
+      title: globalData.data.title,
+      description: globalData.data.description,
+      footer: globalData.data.footer
+
+    }
+  },
   head: () => ({
     meta: [
       {
@@ -30,27 +56,47 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 })
 
+
+
 function RootDocument({ children }: { children: React.ReactNode }) {
+
+  // shellComponent renders before loader completes during SSR, so data may be undefined
+  // We need to handle the case where loaderData is not yet available
+  let loaderData: RootLoaderData | undefined
+  try {
+    loaderData = Route.useLoaderData()
+  } catch {
+    // During initial SSR, loader data might not be available yet
+    loaderData = undefined
+  }
+
+  // Provide safe defaults during SSR when loader hasn't completed yet
+  const header = loaderData?.header
+  const footer = loaderData?.footer
+  
+
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <div className="w-screen h-dvh bg-[#ece2d0] flex justify-center">
-          {children}
+        <div className="w-screen h-dvh bg-[#F0F2ED] flex justify-center">
+          <Container>
+            
+            {header && <Header header={header}/>}
+            <div className='flex justify-center'>
+            
+            </div>
+              <div className='flex-1'>
+                {children}
+              </div>
+            <Footer data={footer}/>
+          </Container>
+
         </div>
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        
         <Scripts />
       </body>
     </html>

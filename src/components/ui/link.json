@@ -5,10 +5,10 @@
   },
   "options": {},
   "attributes": {
-    "Label": {
+    "label": {
       "type": "string"
     },
-    "URL": {
+    "url": {
       "type": "string"
     }
   },
