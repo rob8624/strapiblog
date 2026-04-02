@@ -17,25 +17,18 @@ export function Header({ header }: HeaderProps) {
     
       
       
-    <div className='flex flex-col'>
-  <div className='flex items-center   py-2 gap-4'>
+    
+  <div className='flex flex-col sm:flex-row sm:items-center flex-wrap py-2 gap-4 justify-between border-b-2'>
     
     {/* logo */}
-    <img className='w-40 sm:w-60 shrink-0' src={`${strapiURL}${header.logo.url}`} />
+    <img className='w-40 sm:w-80 shrink-0 self-center sm:self-start' src={`${strapiURL}${header.logo.url}`} />
     
-    {/* text */}
-    <div className='font-head leading-tight tracking-tight text-2xl sm:text-4xl flex flex-wrap'>
-      <span className='text-primary-foreground'>Just a </span>
-      <span className='inline-block -rotate-3 p-1 sm:relative static ml-2 mr-2 bottom-6 shadow-sm bg-primary text-accent-foreground text-2xl sm:text-6xl'>Blog</span>
-      <span> about, </span>
-      <span className='inline-block -rotate-3 p-1 shadow-sm bg-primary text-accent-foreground text-2xl sm:text-6xl m-2'> ...things </span>
-    </div>
-
+    <nav>
+      <Menu items={header.link} />
+    </nav>
   </div>
-  <nav>
-    <Menu items={header.link} />
-  </nav>
-</div>
+  
+
       
    
   )
