@@ -82,7 +82,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <div className="w-screen h-dvh bg-[#F0F2ED] flex justify-center">
+        <div className="w-screen h-dvh bg-white flex justify-center">
           <Container>
             
             {header && <Header header={header}/>}

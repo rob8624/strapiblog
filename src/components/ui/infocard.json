@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_ui_infocards",
+  "info": {
+    "displayName": "infocard"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "text": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

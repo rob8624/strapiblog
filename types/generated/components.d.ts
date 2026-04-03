@@ -25,10 +25,21 @@ export interface UiHeader extends Struct.ComponentSchema {
 export interface UiHero extends Struct.ComponentSchema {
   collectionName: 'components_ui_heroes';
   info: {
-    displayName: 'Hero';
+    displayName: 'hero';
   };
   attributes: {
     Text: Schema.Attribute.Text;
+  };
+}
+
+export interface UiInfocard extends Struct.ComponentSchema {
+  collectionName: 'components_ui_infocards';
+  info: {
+    displayName: 'infocard';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    text: Schema.Attribute.Blocks;
   };
 }
 
@@ -49,6 +60,7 @@ declare module '@strapi/strapi' {
       'ui.footer': UiFooter;
       'ui.header': UiHeader;
       'ui.hero': UiHero;
+      'ui.infocard': UiInfocard;
       'ui.link': UiLink;
     }
   }

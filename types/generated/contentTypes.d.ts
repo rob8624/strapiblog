@@ -447,7 +447,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Hero: Schema.Attribute.Component<'ui.hero', true>;
+    hero: Schema.Attribute.Component<'ui.hero', true>;
+    info: Schema.Attribute.Component<'ui.infocard', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
-import { cva, VariantProps } from "class-variance-authority";
+/* eslint-disable @typescript-eslint/consistent-type-imports */
+import { VariantProps, cva } from "class-variance-authority";
 import React, { ButtonHTMLAttributes } from "react";
 import { Slot } from "@radix-ui/react-slot";
+import { cn } from "@/lib/utils";
 
 export const buttonVariants = cva(
   "font-head transition-all rounded outline-hidden cursor-pointer duration-200 font-medium flex items-center",

@@ -1,4 +1,5 @@
 import { getGlobalData } from "./global"
+import { getHomePageData } from "./homepage"
 
 /**
  * Central API object for all Strapi server functions.
@@ -17,6 +18,9 @@ export const strapiAPI ={
    */
     global: {
         getGlobalData
+    },
+    homepage: {
+        getHomePageData
     }
 
 }

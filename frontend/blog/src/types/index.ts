@@ -1,4 +1,4 @@
-
+import type { CloudinaryImage } from "./cloudinary"
 
 export interface StrapiResponseSingle<T> {
   data: T
@@ -25,6 +25,7 @@ export interface StrapiImage {
   height: number
 }
 
+
 export interface NavLink {
   id: number
   label: string
@@ -38,13 +39,44 @@ export interface HeaderData {
   title: string
 }
 
-export interface HomePage {
-  id: number
-  Hero: Array<{ id: number; Text: string }>
-  Footer: { id: number; Text: string }
-  envUrl: string
-}
+
 
 export interface FooterData {
   text: string | undefined
+}
+
+
+export interface HeroSection {
+  id: number
+  Text: string
+}
+
+export interface InfoSection {
+  id:number
+  text: Array<RichTextNode>
+  image?: CloudinaryImage | null
+}
+
+export interface Homepage {
+  id: number
+  documentId: string
+  hero: Array<HeroSection>
+  info: InfoSection
+}
+
+export interface RichTextChild {
+  text: string
+  bold?: boolean
+  italic?: boolean
+  underline?: boolean
+  code?: boolean
+  [key: string]: any
+}
+
+
+
+export interface RichTextNode {
+  type: 'paragraph' | 'heading' | 'list-item' | 'bulleted-list' | 'numbered-list' | 'link' | string
+  children?: Array<RichTextChild>
+  url?: string // for links
 }
