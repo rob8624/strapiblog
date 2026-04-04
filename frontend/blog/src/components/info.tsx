@@ -3,7 +3,7 @@
 
 import { Card } from "./retroui/Card"
 import type { InfoSection } from "@/types"
-import { RichTextRenderer } from "@/lib/richTextRenderer"
+
 
 
 interface InfoProps {
@@ -16,12 +16,15 @@ export function Info({info}: InfoProps ) {
         <Card.Content>
           <div className="flex flex-col">
             <div className="mb-2">
-              <RichTextRenderer blocks={info.text} />
+              <div
+              className="prose prose-sm sm:prose lg:prose-lg"
+              dangerouslySetInnerHTML={{ __html: info.text }}
+            />
             </div>
             <div className="flex">
               <div>
-                "The more I learn, the more I realize how much I don't know." —
-                Albert Einstein
+               <div className="font-head text-sm">{info.quote}</div>
+               {info.quoteAuthor}
               </div>
               <img
                 className="w-20 rounded-4xl border-2 shadow-xs"

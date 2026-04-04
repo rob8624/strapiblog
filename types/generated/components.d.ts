@@ -39,7 +39,17 @@ export interface UiInfocard extends Struct.ComponentSchema {
   };
   attributes: {
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    text: Schema.Attribute.Blocks;
+    quote: Schema.Attribute.String;
+    quoteAuthor: Schema.Attribute.String;
+    text: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NzY0NzAzOTksImp0aSI6IjY5NzdmNGE3LWY1NTEtNGRmNS05Njk4LTcyMmIxYjJiNzcyMiIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6IjA1YmVjMmI2In0.Z-xQnA3qRH61IKVHEEXzquNJ1v6hgpPTOz6jZeWUZSj2EdF_N-1fjeHMTdnfoopmB9V2wZKhMsMhthwxcUkurw';
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
   };
 }
 

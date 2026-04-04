@@ -53,8 +53,10 @@ export interface HeroSection {
 
 export interface InfoSection {
   id:number
-  text: Array<RichTextNode>
+  text: string
   image?: CloudinaryImage | null
+  quote: string
+  quoteAuthor: string
 }
 
 export interface Homepage {
@@ -75,8 +77,3 @@ export interface RichTextChild {
 
 
 
-export interface RichTextNode {
-  type: 'paragraph' | 'heading' | 'list-item' | 'bulleted-list' | 'numbered-list' | 'link' | string
-  children?: Array<RichTextChild>
-  url?: string // for links
-}
