@@ -126,4 +126,11 @@ code {
   body {
     @apply bg-background text-foreground;
   }
+
+  .rich-text strong {
+    color: #5B3B98;
+    font-size: 2rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  }
 }
+

@@ -77,3 +77,19 @@ export interface RichTextChild {
 
 
 
+
+
+
+
+export type TStrapiResponseCollection<T> = {
+  data: Array<T>
+  meta?: {
+    pagination?: {
+      page: number
+      pageSize: number
+      pageCount: number
+      total: number
+    }
+  }
+}
+

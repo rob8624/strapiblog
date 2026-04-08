@@ -530,22 +530,31 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    blocks: Schema.Attribute.DynamicZone<
+      [
+        'blocks.rich-text',
+        'blocks.image',
+        'blocks.double-image',
+        'blocks.video',
+        'blocks.gallery',
+        'blocks.quote',
+      ]
+    >;
     categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     >;
-    Content: Schema.Attribute.Blocks;
-    Cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Excerpt: Schema.Attribute.String;
+    excerpt: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Title'>;
-    Title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

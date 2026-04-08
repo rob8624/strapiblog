@@ -11,20 +11,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "Title"
+      "targetField": "title"
     },
-    "Content": {
-      "type": "blocks"
+    "excerpt": {
+      "type": "text"
     },
-    "Excerpt": {
-      "type": "string"
-    },
-    "Cover": {
+    "cover": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -39,6 +36,17 @@
       "relation": "oneToMany",
       "target": "api::category.category",
       "mappedBy": "post"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.rich-text",
+        "blocks.image",
+        "blocks.double-image",
+        "blocks.video",
+        "blocks.gallery",
+        "blocks.quote"
+      ]
     }
   }
 }

@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { strapiAPI } from '../data/server-functions'
 import { HeroSection } from '@/components/hero'
 import { Info } from '@/components/info'
+import { BlockRenderer } from '@/components/blocks/block-renderer'
 
 
 
@@ -27,6 +28,8 @@ function App() {
       <div className='flex-1 flex justify-center'>
          <Info info={info} />
       </div>
+       {/* temp test */}
+    
     </div>
   )
 }

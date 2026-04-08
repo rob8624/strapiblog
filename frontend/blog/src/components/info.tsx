@@ -17,7 +17,7 @@ export function Info({info}: InfoProps ) {
           <div className="flex flex-col">
             <div className="mb-2">
               <div
-              className="prose prose-sm sm:prose lg:prose-lg"
+              className="prose prose-sm sm:prose lg:prose-lg rich-text"
               dangerouslySetInnerHTML={{ __html: info.text }}
             />
             </div>

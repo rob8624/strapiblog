@@ -9,7 +9,7 @@ export function HeroSection({ hero }: HeroProps) {
   return (
     <>
       <div className="flex flex-col gap-1 sm:gap-4 justify-center items-center">
-        <Text className="text-1xl font-head pb-5 text-center">
+        <Text className="text-xs  pb-5 text-center">
           {hero.map((item) => item.Text)}
         </Text>
         <div className='w-2/3 sm:w-full'>
