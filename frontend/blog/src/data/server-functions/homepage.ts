@@ -1,5 +1,6 @@
 import { createServerFn } from '@tanstack/react-start'
 import { sdk } from '../strapi-sdk'
+
 import type { Homepage, StrapiResponseSingle } from '@/types'
 
 

@@ -1,16 +1,24 @@
 import { BlockRenderer } from "../blocks/block-renderer"
 import type { CloudinaryImage } from "@/types/cloudinary"
 
+
 export interface IPostDetail {
-  documentId: string
-  title: string
-  slug: string
+  documentId?: string
+  title?: string
+  slug?: string
   excerpt?: string
-  createdAt: string
-  updatedAt: string
+  createdAt?: string
+  updatedAt?: string
   publishedAt?: string
   cover?: CloudinaryImage
   blocks?: Array<any>
+  categories?: Array<ICategory>
+}
+
+export interface ICategory {
+  id: string 
+  documentId: string 
+  name : string
 }
 
 export function PostDetail(props: IPostDetail) {
