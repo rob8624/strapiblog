@@ -19,4 +19,17 @@ module.exports = ({ env }) => ({
       },
     },
   },
+   'reading-time': {
+    enabled: true,
+    config: {
+      skipUndefinedReferences: true,
+      contentTypes: {
+        post: {                                // API ID of your collection-type
+          field: 'reading_time',                  // the field name for the reading time value in your schema
+          references: ['content'], // the names of the fields to extract text from
+        },
+        // ...
+      },
+    },
+  },
 });

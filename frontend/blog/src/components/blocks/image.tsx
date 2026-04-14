@@ -10,16 +10,16 @@ export interface IImage {
 
 export function ImageBlock({image, caption}: Readonly<IImage>) {
   return (
-    <figure className="">
+    <figure className="flex w-full justify-center">
       <img
         src={image.url}
         alt={image.alternativeText ?? caption ?? ''}
         width={image.width}
         height={image.height}
-        className="w-full shadow-md"
+        className="w-[80%] rounded-2"
       />
       {caption && (
-        <figcaption className="text-sm text-gray-500 mt-2">
+        <figcaption className="text-sm text-gray-500 mt-2 ">
           {caption}
         </figcaption>
       )}

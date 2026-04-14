@@ -1,6 +1,6 @@
 import { getGlobalData } from "./global"
 import { getHomePageData } from "./homepage"
-import { getAllPostsData } from "./posts"
+import { getAllPostsData, getPostsBySlug } from "./posts"
 
 /**
  * Central API object for all Strapi server functions.
@@ -24,7 +24,8 @@ export const strapiAPI ={
         getHomePageData
     },
     posts: {
-       getAllPostsData
+       getAllPostsData,
+       getPostsBySlug
     }
 
 }

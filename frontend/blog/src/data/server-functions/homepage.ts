@@ -1,15 +1,20 @@
 import { createServerFn } from '@tanstack/react-start'
 import { sdk } from '../strapi-sdk'
-
-import type { Homepage, StrapiResponseSingle } from '@/types'
+import { getRecentPosts } from './posts'
+import type { HomePageData, Homepage, StrapiResponseSingle } from '@/types'
 
 
 const getHomePage = async () =>
      sdk.single('homepage').find({populate: {hero: {populate: '*'}, info: {populate: '*'}}}) as unknown as Promise<StrapiResponseSingle<Homepage>> 
 
-export const getHomePageData = createServerFn({method: 'GET'}).handler(async (): Promise<StrapiResponseSingle<Homepage>>   => {
-    const response = await getHomePage()
-    return response
+export const getHomePageData = createServerFn({method: 'GET'}).handler(async (): Promise<HomePageData>   => {
+    const [homepage, recentPosts] = await Promise.all(
+        [
+            getHomePage(),
+            getRecentPosts()
+        ])
+    
+    return {homepage, recentPosts}
 }
 
 )

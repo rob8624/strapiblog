@@ -16,3 +16,21 @@ export function cn(...inputs: Array<ClassValue>) {
 export function getStrapiURL() : string {
   return import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
 }
+
+
+export function formatDate(date: any) {
+   
+    const formatted = new Date(date).toLocaleString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+
+   
+  })
+
+  return(formatted)
+
+   
+}

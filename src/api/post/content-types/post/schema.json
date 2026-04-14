@@ -16,7 +16,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "excerpt": {
       "type": "text"
@@ -47,6 +48,15 @@
         "blocks.gallery",
         "blocks.quote"
       ]
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "posts"
+    },
+    "reading_time": {
+      "type": "string"
     }
   }
 }

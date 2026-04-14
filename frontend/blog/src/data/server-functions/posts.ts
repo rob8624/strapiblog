@@ -8,14 +8,22 @@ const posts = sdk.collection('posts')
 
 function getPosts() {
   return posts.find({
+    fields: ['title', 'slug', 'excerpt', 'createdAt', 'publishedAt', 'reading_time'],
     sort: ['publishedAt:desc'],
     populate: {
       cover: true,
+      
       categories:{
         fields: ['name']
       },
       blocks: {
         populate: '*'
+      },
+      author: {
+        fields: ['name', 'bio', 'email'],
+        populate: {
+          avatar: true
+        }
       }
     }
   })
@@ -37,8 +45,33 @@ export function getRecentPosts() {
       categories:{
         fields: ['name']
       },
+      author: {
+        fields: ['name', 'bio', 'email'],
+        populate: {
+          avatar: true
+        }
+      }
       
     }
   })
 }
+
+
+export function getPostsBySlug(slug: string) {
+  return posts.find({
+    filters: { slug: { $eq: slug } },
+    populate: {
+      cover: true,
+      categories:{
+        fields: ['name']
+      },
+      blocks: {
+        populate: '*'
+      }
+    }
+  })
+}
+
+
+
 

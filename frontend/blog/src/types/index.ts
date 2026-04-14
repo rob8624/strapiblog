@@ -1,8 +1,14 @@
 import type { CloudinaryImage } from "./cloudinary"
+import type { IPostDetail } from "@/components/custom/posts-detail"
 
 export interface StrapiResponseSingle<T> {
   data: T
   meta: {}
+}
+
+export interface HomePageData {
+  homepage: StrapiResponseSingle<Homepage>
+  recentPosts: TStrapiResponseCollection<IPostDetail>
 }
 
 export interface TGlobal {
@@ -91,5 +97,14 @@ export type TStrapiResponseCollection<T> = {
       total: number
     }
   }
+}
+
+export interface IAuthor {
+  id?: number
+  documentId?: string
+  name?: string
+  bio?: string
+  email?: string
+  avatar?: StrapiImage
 }
 
