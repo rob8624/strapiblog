@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router"
+import { FaRegHandPointRight } from "react-icons/fa";
 import { Card } from "../retroui/Card"
 import type { IPostDetail } from "./posts-detail"
 import { formatDate } from "@/lib/utils"
-import { FaRegHandPointRight } from "react-icons/fa";
 
 
 
@@ -30,7 +30,7 @@ export function PostCard({ ...post }: IPostDetail) {
       //   </Card.Header>
       // </Card>
     <Link to="/posts/$slug" params={{ slug : post.slug ?? '' }}
-    className="grid grid-cols-3 bg-gray-100 p-3 gap-3 rounded-lg w-full sm:basis-[calc(50%-2rem)] max-h-fit overflow-hidden relative">
+    className="grid grid-cols-3 bg-gray-100 p-3 gap-3 rounded-lg w-full sm:basis-[calc(50%-2rem)] max-h-fit overflow-hidden relative border-2">
       
            <img
               src={post.cover?.formats?.thumbnail?.url}
