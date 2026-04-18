@@ -21,11 +21,13 @@
     "@strapi/provider-upload-cloudinary": "^5.41.1",
     "@strapi/provider-upload-local": "5.41.1",
     "@strapi/strapi": "5.41.1",
+    "@tanstack/zod-adapter": "^1.166.9",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "zod": "^4.3.6"
   },
   "engines": {
     "node": ">=20.0.0",

@@ -3263,6 +3263,29 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tanstack/history@1.161.6":
+  version "1.161.6"
+  resolved "https://registry.npmjs.org/@tanstack/history/-/history-1.161.6.tgz"
+  integrity sha512-NaOGLRrddszbQj9upGat6HG/4TKvXLvu+osAIgfxPYA+eIvYKv8GKDJOrY2D3/U9MRnKfMWD7bU4jeD4xmqyIg==
+
+"@tanstack/react-router@>=1.43.2":
+  version "1.168.22"
+  resolved "https://registry.npmjs.org/@tanstack/react-router/-/react-router-1.168.22.tgz"
+  integrity sha512-W2LyfkfJtDCf//jOjZeUBWwOVl8iDRVTECpGHa2M28MT3T5/VVnjgicYNHR/ax0Filk1iU67MRjcjHheTYvK1Q==
+  dependencies:
+    "@tanstack/history" "1.161.6"
+    "@tanstack/react-store" "^0.9.3"
+    "@tanstack/router-core" "1.168.15"
+    isbot "^5.1.22"
+
+"@tanstack/react-store@^0.9.3":
+  version "0.9.3"
+  resolved "https://registry.npmjs.org/@tanstack/react-store/-/react-store-0.9.3.tgz"
+  integrity sha512-y2iHd/N9OkoQbFJLUX1T9vbc2O9tjH0pQRgTcx1/Nz4IlwLvkgpuglXUx+mXt0g5ZDFrEeDnONPqkbfxXJKwRg==
+  dependencies:
+    "@tanstack/store" "0.9.3"
+    use-sync-external-store "^1.6.0"
+
 "@tanstack/react-virtual@^3.10.8":
   version "3.13.23"
   resolved "https://registry.npmjs.org/@tanstack/react-virtual/-/react-virtual-3.13.23.tgz"
@@ -3270,10 +3293,30 @@
   dependencies:
     "@tanstack/virtual-core" "3.13.23"
 
+"@tanstack/router-core@1.168.15":
+  version "1.168.15"
+  resolved "https://registry.npmjs.org/@tanstack/router-core/-/router-core-1.168.15.tgz"
+  integrity sha512-Wr0424NDtD8fT/uALobMZ9DdcfsTyXtW5IPR++7zvW8/7RaIOeaqXpVDId8ywaGtqPWLWOfaUg2zUtYtukoXYA==
+  dependencies:
+    "@tanstack/history" "1.161.6"
+    cookie-es "^3.0.0"
+    seroval "^1.5.0"
+    seroval-plugins "^1.5.0"
+
+"@tanstack/store@0.9.3":
+  version "0.9.3"
+  resolved "https://registry.npmjs.org/@tanstack/store/-/store-0.9.3.tgz"
+  integrity sha512-8reSzl/qGWGGVKhBoxXPMWzATSbZLZFWhwBAFO9NAyp0TxzfBP0mIrGb8CP8KrQTmvzXlR/vFPPUrHTLBGyFyw==
+
 "@tanstack/virtual-core@3.13.23":
   version "3.13.23"
   resolved "https://registry.npmjs.org/@tanstack/virtual-core/-/virtual-core-3.13.23.tgz"
   integrity sha512-zSz2Z2HNyLjCplANTDyl3BcdQJc2k1+yyFoKhNRmCr7V7dY8o8q5m8uFTI1/Pg1kL+Hgrz6u3Xo6eFUB7l66cg==
+
+"@tanstack/zod-adapter@^1.166.9":
+  version "1.166.9"
+  resolved "https://registry.npmjs.org/@tanstack/zod-adapter/-/zod-adapter-1.166.9.tgz"
+  integrity sha512-HHllQ/CKGi8YBbftv6OmzojtHM6Rk4UszAFICAgUMbwiqtKqjlIZQ/7mv2IPNxBb8YlOQgzyQ4jz2UTEXIi6YA==
 
 "@testing-library/dom@^10.0.0", "@testing-library/dom@>=7.21.4", "@testing-library/dom@10.4.1":
   version "10.4.1"
@@ -4941,6 +4984,11 @@ convert-source-map@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
+
+cookie-es@^3.0.0:
+  version "3.1.1"
+  resolved "https://registry.npmjs.org/cookie-es/-/cookie-es-3.1.1.tgz"
+  integrity sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==
 
 cookie-signature@^1.2.2:
   version "1.2.2"
@@ -7264,6 +7312,11 @@ isbinaryfile@^5.0.6:
   version "5.0.7"
   resolved "https://registry.npmjs.org/isbinaryfile/-/isbinaryfile-5.0.7.tgz"
   integrity sha512-gnWD14Jh3FzS3CPhF0AxNOJ8CxqeblPTADzI38r0wt8ZyQl5edpy75myt08EG2oKvpyiqSqsx+Wkz9vtkbTqYQ==
+
+isbot@^5.1.22:
+  version "5.1.39"
+  resolved "https://registry.npmjs.org/isbot/-/isbot-5.1.39.tgz"
+  integrity sha512-obH0yYahGXdzNxo+djmHhBYThUKDkz565cxkIlt2L9hXfv1NlaLKoDBHo6KxXsYrIXx2RK3x5vY36CfZcobxEw==
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -9657,7 +9710,7 @@ react-dnd@16.0.1:
     fast-deep-equal "^3.1.3"
     hoist-non-react-statics "^3.3.2"
 
-react-dom@*, "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", react-dom@^18.0.0, "react-dom@^18.0.0 || ^19.0.0", "react-dom@^18.0.0 || ^19.0.0 || ^19.0.0-rc", "react-dom@>= 16.8.0", react-dom@>=16.6.0, react-dom@>=16.8, react-dom@>=16.8.0:
+react-dom@*, "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", react-dom@^18.0.0, "react-dom@^18.0.0 || ^19.0.0", "react-dom@^18.0.0 || ^19.0.0 || ^19.0.0-rc", "react-dom@>= 16.8.0", react-dom@>=16.6.0, react-dom@>=16.8, react-dom@>=16.8.0, "react-dom@>=18.0.0 || >=19.0.0":
   version "18.3.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -9864,7 +9917,7 @@ react-window@1.8.10:
     "@babel/runtime" "^7.0.0"
     memoize-one ">=3.1.1 <6"
 
-"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.6.0 || 17 || 18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react@^18 || ~19.0.1 || ~19.1.2 || ^19.2.1", react@^18.0.0, "react@^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0 || ^19.0.0-rc", react@^18.3.1, "react@>= 16.14", "react@>= 16.8 || 18.0.0", "react@>= 16.8.0", react@>=16.3.0, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=18:
+"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.6.0 || 17 || 18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0", "react@^18 || ~19.0.1 || ~19.1.2 || ^19.2.1", react@^18.0.0, "react@^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0 || ^19.0.0-rc", react@^18.3.1, "react@>= 16.14", "react@>= 16.8 || 18.0.0", "react@>= 16.8.0", react@>=16.3.0, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=18, "react@>=18.0.0 || >=19.0.0":
   version "18.3.1"
   resolved "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
@@ -10456,6 +10509,16 @@ serialize-javascript@^6.0.2:
   integrity sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==
   dependencies:
     randombytes "^2.1.0"
+
+seroval-plugins@^1.5.0:
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/seroval-plugins/-/seroval-plugins-1.5.2.tgz"
+  integrity sha512-qpY0Cl+fKYFn4GOf3cMiq6l72CpuVaawb6ILjubOQ+diJ54LfOWaSSPsaswN8DRPIPW4Yq+tE1k5aKd7ILyaFg==
+
+seroval@^1.0, seroval@^1.5.0:
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/seroval/-/seroval-1.5.2.tgz"
+  integrity sha512-xcRN39BdsnO9Tf+VzsE7b3JyTJASItIV1FVFewJKCFcW4s4haIKS3e6vj8PGB9qBwC7tnuOywQMdv5N4qkzi7Q==
 
 setimmediate@^1.0.5:
   version "1.0.5"
@@ -11875,7 +11938,7 @@ zod@^3.19.1:
   resolved "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz"
   integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
 
-"zod@^3.25.76 || ^4", "zod@^3.25.76 || ^4.1.8":
+zod@^3.23.8, "zod@^3.25.76 || ^4", "zod@^3.25.76 || ^4.1.8", zod@^4.3.6:
   version "4.3.6"
   resolved "https://registry.npmjs.org/zod/-/zod-4.3.6.tgz"
   integrity sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==
