@@ -111,8 +111,19 @@ export function getPostsBySlug(slug: string) {
 
 
 
-export const getAllCategories = createServerFn({method:'GET'})
-  .handler(async () => {return categories.find({fields:['name', 'documentId']})})
+export const getAllCategories = createServerFn({ method: 'GET' })
+  .handler(async () => {
+    return categories.find({
+      fields: ['name', 'documentId'],
+      filters: {
+        posts: {
+          id: {
+            $notNull: true
+          }
+        }
+      }
+    })
+  })
 
    
 
