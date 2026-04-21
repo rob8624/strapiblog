@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start"
+import { redirect } from '@tanstack/react-router'
 import { sdk } from "../strapi-sdk"
 
 
@@ -6,7 +7,7 @@ import { sdk } from "../strapi-sdk"
 
 const posts = sdk.collection('posts')
 
-function getPosts() {
+function getPosts(page: number = 1, category?: string  ) {
   return posts.find({
     fields: ['title', 'slug', 'excerpt', 'createdAt', 'publishedAt', 'reading_time'],
     sort: ['publishedAt:desc'],
@@ -24,13 +25,48 @@ function getPosts() {
         populate: {
           avatar: true
         }
+      },
+     
+    },
+     pagination: {
+        page: page,
+        pageSize: 3
+      },
+
+   ...(category && {
+      filters: {
+        categories: {
+          name: {
+            $eq: category
+          }
+        }
       }
-    }
+    }),
+   
   })
 }
 
-export const getAllPostsData = createServerFn({method:'GET'}).handler(async () => {
-    const response = await getPosts()
+export const getAllPostsData = createServerFn({method:'GET'})
+.inputValidator((data: { page: number | undefined, category: string | undefined }) => data)
+.handler(async ({data}) => {
+    const page = data.page ?? 1
+    const response = await getPosts(page, data.category)
+    
+
+    const pagination = response.meta.pagination
+
+    if (!pagination) {
+      throw new Error('No pagination data returned from Strapi')
+    }
+
+    const { pageCount } = pagination
+
+    if (page > pageCount || page < 1) {
+      throw redirect({ to: '/posts', search: { page: 1 } })
+    }
+
+   
+
     console.log(JSON.stringify(response, null, 2))
     return response
 })
@@ -71,6 +107,7 @@ export function getPostsBySlug(slug: string) {
     }
   })
 }
+
 
 
 

@@ -20,7 +20,7 @@ export function Menu({items} : MenuProps) {
     <div className='pt-5 flex gap-2'>{items.map((item) => 
      hompage && item.url === '/' ?  null : 
         <Button key={item.id} size={'sm'} asChild>
-            <Link to={item.url}>{item.label}</Link>
+            <Link to={item.url} className="[&.active]:bg-amber-200">{item.label}</Link>
         </Button>
     
     )}
