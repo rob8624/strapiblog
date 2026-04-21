@@ -6,8 +6,9 @@ import { sdk } from "../strapi-sdk"
 
 
 const posts = sdk.collection('posts')
+const categories = sdk.collection('categories')
 
-function getPosts(page: number = 1, category?: string  ) {
+function getPosts(page: number = 1, category?: string ) {
   return posts.find({
     fields: ['title', 'slug', 'excerpt', 'createdAt', 'publishedAt', 'reading_time'],
     sort: ['publishedAt:desc'],
@@ -109,6 +110,11 @@ export function getPostsBySlug(slug: string) {
 }
 
 
+
+export const getAllCategories = createServerFn({method:'GET'})
+  .handler(async () => {return categories.find({fields:['name', 'documentId']})})
+
+   
 
 
 

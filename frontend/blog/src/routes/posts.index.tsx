@@ -32,24 +32,18 @@ export const Route = createFileRoute('/posts/')({
 
            
 
-  loader: async ({ deps: { category, page } }) => {
-    
-    const response = await strapiAPI.posts.getAllPostsData( { data: {page, category} })
-    const seen = new Set<string>()
-    const categories: Array<Category> = response.data
-      .flatMap((post) => post.categories || [])
-      .filter((cat: Category) => {
-        if (seen.has(cat.documentId)) return false
-        seen.add(cat.documentId)
-        return true
-      })
+loader: async ({ deps: { category, page } }) => {
+  const [response, categoriesResponse] = await Promise.all([
+    strapiAPI.posts.getAllPostsData({ data: { page, category } }),
+    strapiAPI.posts.getAllCategories(),
+  ])
 
-    const posts = response.data
-
-    const pagination =  response.meta.pagination
-
-    return { posts, categories, pagination }
-  },
+  return {
+    posts: response.data,
+    pagination: response.meta.pagination,
+    categories: categoriesResponse.data,
+  }
+},
 
   component: PostsPage,
 })
