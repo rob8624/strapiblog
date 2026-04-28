@@ -10,17 +10,12 @@ interface SubscribeFormProps {
   setShowSubscribe: Dispatch<SetStateAction<boolean>>
 }
 
-
-
-
-
-
-
-
-
 export const SubscribeForm = ({ setShowSubscribe }: SubscribeFormProps) => {
   const [FormValue, setFormValue] = useState('')
   const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [networkError, setNetworkError] = useState(false)
+  const [errorReason , setErrorReason] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // make subscriber in strapi then add call to endpoint here
@@ -30,9 +25,15 @@ export const SubscribeForm = ({ setShowSubscribe }: SubscribeFormProps) => {
       setError(true)
       return
     }
-    await strapiAPI.subscriber.addSubscriber( { data : {email: FormValue} } )
-    setError(false)
-  }
+    try {
+      await strapiAPI.subscriber.addSubscriber({ data: { email: FormValue } })
+      setError(false)
+      setSuccess(true)
+    } catch (err) {
+        setNetworkError(true)
+        setErrorReason(err instanceof Error ? err.message : 'Something went wrong, please try again.')
+    }
+}
 
   const CloseButton = () => {
     return (
@@ -88,6 +89,52 @@ const { data, isLoading } = useQuery({
   );
 }
 
+const SuccessDialog = () => {
+    return (
+<Dialog open={success} onOpenChange={setSuccess}>
+  <Dialog.Content>
+    <Dialog.Header>
+      <div>Successfully subscribed! 🎉</div>
+    </Dialog.Header>
+    <section className="flex flex-col gap-4 p-4">
+      <section className="text-xl">
+        Thank you for subscribing!
+      </section>
+      <section className="flex w-full justify-end">
+        <Button onClick={() => {
+          setSuccess(false)
+          setShowSubscribe(false)
+        }}>Ok, got it!</Button>
+      </section>
+    </section>
+  </Dialog.Content>
+</Dialog>)
+}
+
+const ErrorDialog = () => {
+return (<Dialog open={networkError} onOpenChange={setNetworkError}>
+  <Dialog.Content>
+    <Dialog.Header>
+      <div>Error</div>
+    </Dialog.Header>
+    <section className="flex flex-col gap-4 p-4">
+      <section className="text-xl">
+        Sorry! {errorReason}
+      </section>
+      <section className="flex w-full justify-end">
+        <Button onClick={() => {
+          setSuccess(false)
+          setShowSubscribe(false)
+        }}>Close</Button>
+      </section>
+    </section>
+  </Dialog.Content>
+</Dialog>)
+}
+
+
+
+
   const FormMessages = () => {
     return (
          <><div>Enter your email address to receive updates</div>
@@ -120,6 +167,9 @@ const { data, isLoading } = useQuery({
         </div>
         {error && 'Please enter a valid email address'}
       </div>
+      <SuccessDialog/>
+      <ErrorDialog />
     </form>
   )
-}
+  }
+
