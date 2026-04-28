@@ -8,7 +8,7 @@ import { formatDate } from "@/lib/utils"
 
 export function PostCard({ ...post }: IPostDetail) {
 
-  const formattedDate = () => formatDate(post.createdAt)
+  const formattedDate = () => formatDate(post.publishedAt)
   return (
     
       // <Card className="w-full sm:basis-[calc(50%-2rem)] shrink-0 flex flex-col rounded-sm">

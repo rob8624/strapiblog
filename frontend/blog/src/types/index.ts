@@ -81,6 +81,20 @@ export interface RichTextChild {
   [key: string]: any
 }
 
+export interface SiteMessage {
+  id: number
+  documentId: string
+  key: string
+  message : string
+  content: string
+}
+
+export interface Subscriber {
+  id: number
+  documentId: string
+  email: string
+}
+
 
 
 

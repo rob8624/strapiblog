@@ -15,6 +15,7 @@ export function RecentCard({ ...post }: IPostDetail) {
   return (
     <>
       <div>
+        <Link to="/posts/$slug" params={{ slug : post.slug || '' }}>
         <Card className="grid grid-cols-4 grid-rows-2 max-h-40 min-h-40 ">
           <Card.Header className="bg-[#C4A1FF] row-span-2 col-span-2 font-head break-word line-clamp-3 overflow-hidden rounded-r-sm">
             <span
@@ -48,6 +49,7 @@ export function RecentCard({ ...post }: IPostDetail) {
           
           <div>{formatted}</div>
         </div>
+        </Link>
       </div>
     </>
   )

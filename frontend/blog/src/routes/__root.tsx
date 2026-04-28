@@ -1,6 +1,7 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { strapiAPI} from '../data/server-functions'
 
 
@@ -20,6 +21,8 @@ interface RootLoaderData {
   description: string
   footer: FooterData
 }
+
+const queryClient = new QueryClient()
 
 export const Route = createRootRoute({
   loader: async () => {
@@ -59,6 +62,7 @@ export const Route = createRootRoute({
 
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  
 
   // shellComponent renders before loader completes during SSR, so data may be undefined
   // We need to handle the case where loaderData is not yet available
@@ -77,12 +81,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
 
   return (
+    <QueryClientProvider client={queryClient}>
     <html lang="en">
       <head>
         <HeadContent />
       </head>
-      <body>
-        <div className="max-w-screen h-dvh bg-white flex justify-center">
+      <body className='max-w-screen h-dvh'>
+        <div className=" bg-white flex justify-center h-full">
           <Container>
             
             {header && <Header header={header}/>}
@@ -100,5 +105,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+    </QueryClientProvider>
   )
 }

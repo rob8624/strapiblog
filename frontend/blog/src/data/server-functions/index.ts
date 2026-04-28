@@ -1,6 +1,7 @@
 import { getGlobalData } from "./global"
 import { getHomePageData } from "./homepage"
 import { getAllCategories, getAllPostsData, getPostsBySlug } from "./posts"
+import { addSubscriber, getSubscriberMessage } from "./subscriber"
 
 /**
  * Central API object for all Strapi server functions.
@@ -27,6 +28,10 @@ export const strapiAPI ={
        getAllPostsData,
        getPostsBySlug,
        getAllCategories
+    },
+    subscriber: {
+        addSubscriber,
+        getSubscriberMessage
     }
 
 }

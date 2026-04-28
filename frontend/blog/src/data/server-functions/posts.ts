@@ -8,10 +8,10 @@ import { sdk } from "../strapi-sdk"
 const posts = sdk.collection('posts')
 const categories = sdk.collection('categories')
 
-function getPosts(page: number = 1, category?: string ) {
+function getPosts(page: number = 1, order: string, category?: string, ) {
   return posts.find({
     fields: ['title', 'slug', 'excerpt', 'createdAt', 'publishedAt', 'reading_time'],
-    sort: ['publishedAt:desc'],
+    sort: [`publishedAt:${order}`],
     populate: {
       cover: true,
       
@@ -48,10 +48,11 @@ function getPosts(page: number = 1, category?: string ) {
 }
 
 export const getAllPostsData = createServerFn({method:'GET'})
-.inputValidator((data: { page: number | undefined, category: string | undefined }) => data)
+.inputValidator((data: { page: number | undefined, category: string | undefined, order: string }) => data)
 .handler(async ({data}) => {
     const page = data.page ?? 1
-    const response = await getPosts(page, data.category)
+    const order = data.order
+    const response = await getPosts(page, order, data.category)
     
 
     const pagination = response.meta.pagination
