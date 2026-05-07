@@ -34,7 +34,9 @@ export interface BlocksImage extends Struct.ComponentSchema {
     displayName: 'image';
   };
   attributes: {
-    caption: Schema.Attribute.String;
+    captionposition: Schema.Attribute.Enumeration<
+      ['top', 'bottom', 'left', 'right']
+    >;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }

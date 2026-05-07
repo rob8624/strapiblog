@@ -86,7 +86,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className='max-w-screen h-dvh'>
+      <body className='max-w-screen min-h-dvh flex flex-col'>
         <div className=" bg-white flex justify-center h-full">
           <Container>
             

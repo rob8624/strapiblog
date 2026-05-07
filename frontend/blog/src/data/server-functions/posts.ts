@@ -100,11 +100,17 @@ export function getPostsBySlug(slug: string) {
     filters: { slug: { $eq: slug } },
     populate: {
       cover: true,
-      categories:{
+      categories: {
         fields: ['name']
       },
       blocks: {
         populate: '*'
+      },
+      author: {
+        fields: ['name', 'bio', 'email'],
+        populate: {
+          avatar: true
+        }
       }
     }
   })

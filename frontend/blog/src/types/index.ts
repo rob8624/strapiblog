@@ -119,6 +119,6 @@ export interface IAuthor {
   name?: string
   bio?: string
   email?: string
-  avatar?: StrapiImage
+  avatar?: CloudinaryImage | null
 }
 

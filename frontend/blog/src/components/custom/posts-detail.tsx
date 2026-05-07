@@ -1,6 +1,9 @@
 import { BlockRenderer } from "../blocks/block-renderer"
+import { PostHeader } from "./post-components/posts-header"
+import { PostCategories } from "./post-components/post-categories"
 import type { CloudinaryImage } from "@/types/cloudinary"
 import type { IAuthor } from "@/types"
+import { formatDate } from "@/lib/utils"
 
 
 export interface IPostDetail {
@@ -25,17 +28,22 @@ export interface ICategory {
 }
 
 export function PostDetail(props: IPostDetail) {
-    console.log('blocks:', props.blocks)
+    console.log(props)
   return (
-    <div className="w-full">
-      <h2>{props.title}</h2>
-      <p>{props.slug}</p>
-      <p>{props.excerpt}</p>
+    <article className="w-full">
+      <PostHeader title={props.title} excerpt={props.excerpt}
+        publishedAt={props.publishedAt}
+        author={props.author} />
+      
+      <PostCategories categories={props.categories} />
+      
+      
+      
    
        {props.blocks && props.blocks.length > 0 && (
         <BlockRenderer blocks={props.blocks} />
       )}
       
-    </div>
+    </article>
   )
 }

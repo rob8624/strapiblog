@@ -15,8 +15,14 @@
         "audios"
       ]
     },
-    "caption": {
-      "type": "string"
+    "captionposition": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ]
     }
   },
   "config": {}
