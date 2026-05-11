@@ -28,7 +28,8 @@ export interface ICategory {
 }
 
 export function PostDetail(props: IPostDetail) {
-    console.log(props)
+    console.log("post detail props log", props)
+    console.log(JSON.stringify(props.blocks, null, 2))
   return (
     <article className="w-full">
       <PostHeader title={props.title} excerpt={props.excerpt}

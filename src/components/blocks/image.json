@@ -23,6 +23,11 @@
         "left",
         "right"
       ]
+    },
+    "settings": {
+      "type": "component",
+      "component": "settings.image-settings",
+      "repeatable": false
     }
   },
   "config": {}

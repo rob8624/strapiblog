@@ -17,11 +17,13 @@
   "dependencies": {
     "@breezertwo/strapi-plugin-reading-time": "^5.1.1",
     "@ckeditor/strapi-plugin-ckeditor": "^1.1.2",
+    "@notum-cz/strapi-plugin-tiptap-editor": "^1.2.3",
     "@strapi/plugin-users-permissions": "5.41.1",
     "@strapi/provider-upload-cloudinary": "^5.41.1",
     "@strapi/provider-upload-local": "5.41.1",
     "@strapi/strapi": "5.41.1",
     "@tanstack/zod-adapter": "^1.166.9",
+    "esbuild": "^0.28.0",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

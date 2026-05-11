@@ -38,6 +38,7 @@ export interface BlocksImage extends Struct.ComponentSchema {
       ['top', 'bottom', 'left', 'right']
     >;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    settings: Schema.Attribute.Component<'settings.image-settings', false>;
   };
 }
 
@@ -58,13 +59,11 @@ export interface BlocksRichText extends Struct.ComponentSchema {
     displayName: 'rich-text';
   };
   attributes: {
-    content: Schema.Attribute.RichText &
+    content: Schema.Attribute.Text &
       Schema.Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
+        'plugin::tiptap-editor.RichText',
         {
-          licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NzY0NzAzOTksImp0aSI6IjY5NzdmNGE3LWY1NTEtNGRmNS05Njk4LTcyMmIxYjJiNzcyMiIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6IjA1YmVjMmI2In0.Z-xQnA3qRH61IKVHEEXzquNJ1v6hgpPTOz6jZeWUZSj2EdF_N-1fjeHMTdnfoopmB9V2wZKhMsMhthwxcUkurw';
-          output: 'HTML';
-          preset: 'rich';
+          preset: 'full';
         }
       >;
   };
@@ -77,6 +76,21 @@ export interface BlocksVideo extends Struct.ComponentSchema {
   };
   attributes: {
     url: Schema.Attribute.String;
+  };
+}
+
+export interface SettingsImageSettings extends Struct.ComponentSchema {
+  collectionName: 'components_settings_image_settings';
+  info: {
+    displayName: 'image settings';
+  };
+  attributes: {
+    border: Schema.Attribute.Boolean;
+    captiontextposition: Schema.Attribute.Enumeration<
+      ['top', 'bottom', 'left', 'right']
+    >;
+    credit: Schema.Attribute.String;
+    rounded: Schema.Attribute.Enumeration<['small', 'medium', 'large']>;
   };
 }
 
@@ -153,6 +167,7 @@ declare module '@strapi/strapi' {
       'blocks.quote': BlocksQuote;
       'blocks.rich-text': BlocksRichText;
       'blocks.video': BlocksVideo;
+      'settings.image-settings': SettingsImageSettings;
       'ui.footer': UiFooter;
       'ui.header': UiHeader;
       'ui.hero': UiHero;

@@ -1,14 +1,21 @@
+import { generateHTML } from '@tiptap/html'
+import StarterKit from '@tiptap/starter-kit'
+import Image from '@tiptap/extension-image'
+
 export interface IRichText {
     __component: 'blocks.rich-text'
     id: number
-    content : string
+    content: string | object
 }
 
-
-
 export function RichTextBlock({content}: Readonly<IRichText>) {
-    return (<div
-      className="rich-text"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />)
+    const parsed = typeof content === 'string' ? JSON.parse(content) : content
+    const html = generateHTML(parsed, [StarterKit, Image])
+    
+    return (
+        <div
+          className="rich-text prose prose-sm max-w-none pb-10 pt-10"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+    )
 }

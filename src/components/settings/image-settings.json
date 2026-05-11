@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_settings_image_settings",
+  "info": {
+    "displayName": "image settings"
+  },
+  "options": {},
+  "attributes": {
+    "captiontextposition": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ]
+    },
+    "rounded": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "border": {
+      "type": "boolean"
+    },
+    "credit": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
