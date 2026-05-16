@@ -1,3 +1,4 @@
+import { string } from "zod"
 import type { CloudinaryImage } from "./cloudinary"
 import type { IPostDetail } from "@/components/custom/posts-detail"
 
@@ -38,11 +39,17 @@ export interface NavLink {
   url: string
 }
 
+export interface HeaderSocials  {
+  platform: 'facebook' | 'twitter' | 'instagram' | 'github'
+  url: string
+}
+
 export interface HeaderData {
   id: number
   logo: StrapiImage
   link: Array<NavLink>
   title: string
+  social_links: Array<HeaderSocials>
 }
 
 
@@ -65,11 +72,19 @@ export interface InfoSection {
   quoteAuthor: string
 }
 
+
+export interface TipTapRichText {
+   id: number
+   content: string | object
+}
+
+
 export interface Homepage {
   id: number
   documentId: string
   hero: Array<HeroSection>
   info: InfoSection
+  news: TipTapRichText
 }
 
 export interface RichTextChild {

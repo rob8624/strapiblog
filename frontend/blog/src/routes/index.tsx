@@ -8,6 +8,7 @@ import { RecentCard } from '@/components/custom/recent-card'
 import { Info } from '@/components/info'
 import { Button } from '@/components/retroui/Button'
 import { SubscribeForm } from '@/components/custom/subscribeForm'
+import { News } from '@/components/news'
 
 
 
@@ -19,6 +20,7 @@ export const Route = createFileRoute('/')({
     return {
       hero: data.homepage.data.hero,
       info: data.homepage.data.info,
+      news: data.homepage.data.news,
       recentPosts: data.recentPosts.data
     }
   },
@@ -26,7 +28,7 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
-  const {hero, info, recentPosts} = Route.useLoaderData()
+  const {hero, info, news, recentPosts} = Route.useLoaderData()
   const [showSubscribe, setShowSubscribe] = useState<boolean>(false)
 
 
@@ -41,6 +43,7 @@ function App() {
           <Button onClick={() => setShowSubscribe(prev => !prev)}>Subscribe</Button >
           }
         </div>
+       { showSubscribe ? null : <News data={news}/>}
       </div>
       <div className='flex-1 flex justify-center'>
        

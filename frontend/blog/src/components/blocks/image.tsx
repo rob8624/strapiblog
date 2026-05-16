@@ -5,7 +5,9 @@ export interface ImageSettings  {
     captiontextposition? : 'top' | 'left' | 'right' | 'bottom'
     rounded?: 'small' | 'medium' | 'large'
     border?: boolean
-    credit: string | undefined
+    credit?: string | undefined 
+    offset?: boolean
+    captionbrackets?: boolean
 }
 
 

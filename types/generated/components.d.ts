@@ -6,11 +6,14 @@ export interface BlocksDoubleImage extends Struct.ComponentSchema {
     displayName: 'double-image';
   };
   attributes: {
-    caption: Schema.Attribute.String;
-    images: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    images: Schema.Attribute.Component<'blocks.image', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+          min: 2;
+        },
+        number
+      >;
   };
 }
 
@@ -34,9 +37,6 @@ export interface BlocksImage extends Struct.ComponentSchema {
     displayName: 'image';
   };
   attributes: {
-    captionposition: Schema.Attribute.Enumeration<
-      ['top', 'bottom', 'left', 'right']
-    >;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     settings: Schema.Attribute.Component<'settings.image-settings', false>;
   };
@@ -86,10 +86,13 @@ export interface SettingsImageSettings extends Struct.ComponentSchema {
   };
   attributes: {
     border: Schema.Attribute.Boolean;
+    captionbrackets: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
     captiontextposition: Schema.Attribute.Enumeration<
       ['top', 'bottom', 'left', 'right']
     >;
     credit: Schema.Attribute.String;
+    offset: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     rounded: Schema.Attribute.Enumeration<['small', 'medium', 'large']>;
   };
 }
@@ -112,6 +115,7 @@ export interface UiHeader extends Struct.ComponentSchema {
   attributes: {
     link: Schema.Attribute.Component<'ui.link', true>;
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    social_links: Schema.Attribute.Component<'ui.socials', true>;
     title: Schema.Attribute.String;
   };
 }
@@ -158,6 +162,35 @@ export interface UiLink extends Struct.ComponentSchema {
   };
 }
 
+export interface UiNews extends Struct.ComponentSchema {
+  collectionName: 'components_ui_news';
+  info: {
+    displayName: 'news';
+  };
+  attributes: {
+    content: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::tiptap-editor.RichText',
+        {
+          preset: 'full';
+        }
+      >;
+  };
+}
+
+export interface UiSocials extends Struct.ComponentSchema {
+  collectionName: 'components_ui_socials';
+  info: {
+    displayName: 'socials';
+  };
+  attributes: {
+    platform: Schema.Attribute.Enumeration<
+      ['facebook', 'twitter', 'github', 'instagram']
+    >;
+    url: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -173,6 +206,8 @@ declare module '@strapi/strapi' {
       'ui.hero': UiHero;
       'ui.infocard': UiInfocard;
       'ui.link': UiLink;
+      'ui.news': UiNews;
+      'ui.socials': UiSocials;
     }
   }
 }

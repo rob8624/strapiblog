@@ -20,6 +20,11 @@
       "type": "component",
       "component": "ui.infocard",
       "repeatable": false
+    },
+    "news": {
+      "type": "component",
+      "component": "ui.news",
+      "repeatable": false
     }
   }
 }

@@ -1,6 +1,8 @@
 import { createServerFn } from "@tanstack/react-start"
 import { redirect } from '@tanstack/react-router'
 import { sdk } from "../strapi-sdk"
+import { postBySlugSchema } from "../data-schema"
+
 
 
 
@@ -9,6 +11,8 @@ const posts = sdk.collection('posts')
 const categories = sdk.collection('categories')
 
 function getPosts(page: number = 1, order: string, category?: string, ) {
+
+
   return posts.find({
     fields: ['title', 'slug', 'excerpt', 'createdAt', 'publishedAt', 'reading_time'],
     sort: [`publishedAt:${order}`],
@@ -19,8 +23,7 @@ function getPosts(page: number = 1, order: string, category?: string, ) {
         fields: ['name']
       },
       blocks: {
-        populate: '*'
-      },
+  populate: '*'},
       author: {
         fields: ['name', 'bio', 'email'],
         populate: {
@@ -103,9 +106,9 @@ export function getPostsBySlug(slug: string) {
       categories: {
         fields: ['name']
       },
-      blocks: {
-        populate: '*'
-      },
+    blocks: {
+  on: postBySlugSchema
+},
       author: {
         fields: ['name', 'bio', 'email'],
         populate: {

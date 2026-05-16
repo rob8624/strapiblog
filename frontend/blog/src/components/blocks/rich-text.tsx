@@ -14,7 +14,7 @@ export function RichTextBlock({content}: Readonly<IRichText>) {
     
     return (
         <div
-          className="rich-text prose prose-sm max-w-none pb-10 pt-10"
+          className="rich-text prose prose-sm max-w-none pb-5 pt-5"
           dangerouslySetInnerHTML={{ __html: html }}
         />
     )

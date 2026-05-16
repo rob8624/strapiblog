@@ -27,6 +27,14 @@
     },
     "credit": {
       "type": "string"
+    },
+    "offset": {
+      "type": "boolean",
+      "default": false
+    },
+    "captionbrackets": {
+      "type": "boolean",
+      "default": true
     }
   },
   "config": {}

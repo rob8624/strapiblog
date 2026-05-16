@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_ui_news",
+  "info": {
+    "displayName": "news"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "customField",
+      "customField": "plugin::tiptap-editor.RichText",
+      "options": {
+        "preset": "full"
+      }
+    }
+  },
+  "config": {}
+}

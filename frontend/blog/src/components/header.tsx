@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Menu } from './menu'
 import type { HeaderData } from '@/types'
+import { FaFacebook, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa'
+import { isTemplateExpression } from 'typescript'
 
 
 interface HeaderProps {
@@ -8,9 +10,19 @@ interface HeaderProps {
 }
 
 
+const icons = {
+  'facebook' : FaFacebook,
+  'github' : FaGithub,
+  'twitter' : FaTwitter,
+  'instagram' : FaInstagram
+}
+
+
 
 export function Header({ header }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
+
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,10 +38,40 @@ export function Header({ header }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
  
- 
+   const SocialLinks = () => {
+  return (
+    <>
+      {header.social_links.map((item) => {
+        const Icon = icons[item.platform]
+
+        return (
+         
+           <a
+  key={item.platform}
+  href={
+    item.url.startsWith('http')
+      ? item.url
+      : `https://${item.url}`
+  }
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Icon />
+</a>
+           
+       
+        )
+      })}
+    </>
+  )
+}
+  
+  
+  
+  
   return (
      
-    
+
       
       
     
@@ -44,6 +86,9 @@ export function Header({ header }: HeaderProps) {
     `}
     src={`${header.logo.url}`} 
   />
+  <div className='flex gap-2'>
+ <SocialLinks />
+ </div>
   <nav>
     <Menu items={header.link} className={`pt-5 flex gap-2 mb-2`} />
   </nav>

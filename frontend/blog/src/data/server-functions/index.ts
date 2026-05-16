@@ -32,6 +32,7 @@ export const strapiAPI ={
     subscriber: {
         addSubscriber,
         getSubscriberMessage
-    }
+    },
+   
 
 }

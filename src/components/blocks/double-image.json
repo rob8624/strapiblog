@@ -6,17 +6,11 @@
   "options": {},
   "attributes": {
     "images": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "caption": {
-      "type": "string"
+      "type": "component",
+      "component": "blocks.image",
+      "repeatable": true,
+      "min": 2,
+      "max": 2
     }
   },
   "config": {}

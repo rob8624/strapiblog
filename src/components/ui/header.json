@@ -22,6 +22,11 @@
     },
     "title": {
       "type": "string"
+    },
+    "social_links": {
+      "type": "component",
+      "component": "ui.socials",
+      "repeatable": true
     }
   },
   "config": {}

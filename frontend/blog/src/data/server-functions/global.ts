@@ -13,6 +13,6 @@ const getGlobal = async () =>
 
 export const getGlobalData = createServerFn({method:'GET'}).handler(async (): Promise<StrapiResponseSingle<TGlobal>> =>  {
     const response = await getGlobal()
-    console.log(response)
+    console.log(response, 'global data')
     return response
 })
