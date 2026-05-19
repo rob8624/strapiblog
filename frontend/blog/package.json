@@ -10,7 +10,8 @@
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "check": "prettier --write . && eslint --fix",
+    "_cache-bust": "1"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
