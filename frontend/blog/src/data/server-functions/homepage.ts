@@ -13,7 +13,7 @@ export const getHomePageData = createServerFn({method: 'GET'}).handler(async ():
             getHomePage(),
             getRecentPosts()
         ])
-    
+    console.log(homepage)
     return {homepage, recentPosts}
 }
 

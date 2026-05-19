@@ -16,7 +16,7 @@ export function PostHeader({ title, excerpt, publishedAt, author }: PostHeaderPr
       <div className="flex gap-2 pt-5 items-center">
         <div className="text-md">Published on {formatDate(publishedAt)}</div>
         <div>by {author?.name}</div>
-        <img src={author?.avatar?.formats?.thumbnail?.url} alt={title} className="w-7 rounded-full"/>
+        <img src={author?.avatar?.formats?.thumbnail?.url ?? author?.avatar?.url}  alt={title} className="w-7 rounded-full"/>
       </div>
     </header>
   )

@@ -33,7 +33,7 @@ export function PostCard({ ...post }: IPostDetail) {
     className="grid grid-cols-3 bg-gray-100 p-3 gap-3 rounded-lg w-full sm:basis-[calc(50%-2rem)] max-h-fit overflow-hidden relative border-2">
       
            <img
-              src={post.cover?.formats?.thumbnail?.url}
+              src={post.cover?.formats?.thumbnail?.url || post.cover?.url }
               alt={post.title}
               className="object-contain rounded-lg h-40"
             />
