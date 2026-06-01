@@ -25,7 +25,7 @@ interface RootLoaderData {
 
 const queryClient = new QueryClient()
 const SITE_URL =
-  import.meta.env.RAILWAY_PUBLIC_DOMAIN ??
+  process.env.RAILWAY_PUBLIC_DOMAIN ??
   'http://localhost:3000'
 
 export const Route = createRootRoute({
