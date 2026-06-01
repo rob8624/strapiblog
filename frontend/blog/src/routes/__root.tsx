@@ -24,9 +24,7 @@ interface RootLoaderData {
 }
 
 const queryClient = new QueryClient()
-const SITE_URL =
-  process.env.RAILWAY_PUBLIC_DOMAIN ??
-  'http://localhost:3000'
+
 
 export const Route = createRootRoute({
   loader: async () => {
@@ -36,6 +34,7 @@ export const Route = createRootRoute({
       title: globalData.data.title,
       description: globalData.data.description,
       footer: globalData.data.footer
+      siteUrl: process.env.RAILWAY_PUBLIC_DOMAIN ?? 'http://localhost:3000'
 
     }
   },
@@ -77,13 +76,13 @@ export const Route = createRootRoute({
     //homepage fallback only
     {
       property: 'og:url',
-      content: SITE_URL,
+      content: loaderData?.siteUrl,
     },
 
     // fallback image (NOT dynamic header logo ideally)
     {
       property: 'og:image',
-      content: `${SITE_URL}/og-default.jpg`,
+      content: `${loaderData?.siteUrl}/og-default.jpg`,
     },
 
     // ===== Twitter =====
