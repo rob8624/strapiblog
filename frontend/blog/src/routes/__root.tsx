@@ -24,7 +24,9 @@ interface RootLoaderData {
 }
 
 const queryClient = new QueryClient()
-const SITE_URL = getStrapiURL()
+const SITE_URL =
+  import.meta.env.VITE_SITE_URL ??
+  'http://localhost:3000'
 
 export const Route = createRootRoute({
   loader: async () => {
