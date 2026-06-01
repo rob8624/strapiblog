@@ -37,7 +37,7 @@ export function Info({info}: InfoProps ) {
               
               <img
                 className="w-20 rounded-4xl border-2 shadow-xs"
-                src={info.image?.url}
+                src={info.image?.url} alt={info.image?.alternativeText ?? 'Authur info image'}
               />
             </div>
           </div>

@@ -85,6 +85,7 @@ export function Header({ header }: HeaderProps) {
       ${scrolled ? 'w-24' : 'w-40'}
     `}
     src={`${header.logo.url}`} 
+    alt={header.logo.alternativeText ?? "blog logo"}
   />
   <div className='flex gap-2'>
  <SocialLinks />

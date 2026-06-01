@@ -36,6 +36,9 @@ function App() {
   return (
     <>
     <div className="flex flex-col sm:flex-row flex-wrap mt-0 sm:mt-10 gap-10 sm:gap-3">
+      <h1 className="sr-only">
+        Robert Melen, photographer, Wales – Photography, Coding and Mountain Biking Blog
+      </h1>
       <div className='flex-1 flex flex-col gap-4'>
         <HeroSection hero={hero}/>
         <div className='flex  items-center justify-center mt-5'>
