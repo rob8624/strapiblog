@@ -82,7 +82,7 @@ export const Route = createRootRoute({
     // fallback image (NOT dynamic header logo ideally)
     {
       property: 'og:image',
-      content: `${loaderData?.siteUrl}/og-default.jpg`,
+      content: loaderData?.header.logo.url,
     },
 
     // ===== Twitter =====
