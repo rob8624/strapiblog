@@ -12,9 +12,7 @@ interface InfoProps {
 }
 
 export function Info({info}: InfoProps ) {
-     console.log(typeof info.text)
-     console.log(info.text)
-
+     
      const html = generateHTML(
   JSON.parse(info.text),
   [StarterKit]

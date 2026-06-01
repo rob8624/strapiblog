@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { strapiAPI} from '../data/server-functions'
+import { getStrapiURL } from '@/lib/utils'
 
 
 
@@ -23,6 +24,7 @@ interface RootLoaderData {
 }
 
 const queryClient = new QueryClient()
+const SITE_URL = getStrapiURL()
 
 export const Route = createRootRoute({
   loader: async () => {
@@ -35,19 +37,69 @@ export const Route = createRootRoute({
 
     }
   },
-  head: () => ({
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'TanStack Start Starter',
-      },
-    ],
+  head: ({ loaderData }) => ({
+     meta: [
+    { charSet: 'utf-8' },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+
+    // ===== SEO defaults =====
+    {
+      title: loaderData?.title ?? 'Robert Melen Blog',
+    },
+    {
+      name: 'description',
+      content:
+        loaderData?.description ??
+        'Blog by Robert Melen about photography, coding and mountain biking',
+    },
+
+    // ===== Open Graph defaults =====
+    {
+      property: 'og:title',
+      content: loaderData?.title ?? 'Robert Melen Blog',
+    },
+    {
+      property: 'og:description',
+      content:
+        loaderData?.description ??
+        'Blog by Robert Melen about photography, coding and mountain biking',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    //homepage fallback only
+    {
+      property: 'og:url',
+      content: SITE_URL,
+    },
+
+    // fallback image (NOT dynamic header logo ideally)
+    {
+      property: 'og:image',
+      content: `${SITE_URL}/og-default.jpg`,
+    },
+
+    // ===== Twitter =====
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: loaderData?.title ?? 'Robert Melen Blog',
+    },
+    {
+      name: 'twitter:description',
+      content:
+        loaderData?.description ??
+        'Blog by Robert Melen about photography, coding and mountain biking',
+    },
+  ],
     links: [
       {
         rel: 'stylesheet',
@@ -78,7 +130,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   const header = loaderData?.header
   const footer = loaderData?.footer
   
-
+  
 
   return (
     <QueryClientProvider client={queryClient}>
