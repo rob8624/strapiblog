@@ -1,5 +1,6 @@
 
-
+import { generateHTML } from "@tiptap/html"
+import StarterKit from "@tiptap/starter-kit"
 
 import { Card } from "./retroui/Card"
 import type { InfoSection } from "@/types"
@@ -11,17 +12,23 @@ interface InfoProps {
 }
 
 export function Info({info}: InfoProps ) {
-  console.log('info prop', info)
-    console.log('image url', info.image?.url)
+     console.log(typeof info.text)
+     console.log(info.text)
+
+     const html = generateHTML(
+  JSON.parse(info.text),
+  [StarterKit]
+)
+     
     return (
       <Card className="shadom-md w-[90%] relative hover:rotate-2">
         <Card.Content>
           <div className="flex flex-col">
             <div className="mb-2">
-              <div
-              className="prose prose-sm sm:prose lg:prose-lg rich-text"
-              dangerouslySetInnerHTML={{ __html: info.text }}
-            />
+             <div
+  className="prose prose-sm sm:prose lg:prose-lg"
+  dangerouslySetInnerHTML={{ __html: html }}
+/>
             </div>asdadsadadasd
             <div className="flex">
               <div>
