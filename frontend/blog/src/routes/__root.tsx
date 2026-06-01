@@ -33,7 +33,7 @@ export const Route = createRootRoute({
       header: globalData.data.header,
       title: globalData.data.title,
       description: globalData.data.description,
-      footer: globalData.data.footer
+      footer: globalData.data.footer,
       siteUrl: process.env.RAILWAY_PUBLIC_DOMAIN ?? 'http://localhost:3000'
 
     }
