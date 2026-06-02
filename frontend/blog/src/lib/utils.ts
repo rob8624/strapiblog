@@ -1,6 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import clsx from 'clsx'
 import type { ClassValue } from 'clsx'
+import { createServerFn } from '@tanstack/react-start'
 
 
 export function cn(...inputs: Array<ClassValue>) {
@@ -34,3 +35,8 @@ export function formatDate(date: any) {
 
    
 }
+
+
+export const frontEndUrl = process.env.RAILWAY_PUBLIC_DOMAIN
+  ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+  : 'http://localhost:3000'

@@ -2,19 +2,43 @@ import { createFileRoute } from '@tanstack/react-router'
 import { strapiAPI } from '@/data/server-functions'
 import { PostDetail } from '@/components/custom/posts-detail'
 import { IPostDetail } from '@/components/custom/posts-detail'
+import { frontEndUrl } from '@/lib/utils'
+
+
+type PostLoaderData = {
+  post: IPostDetail
+  siteUrl: string
+  slug: string
+}
 
 export const Route = createFileRoute('/posts/$slug')({
-  loader: async ({params}): Promise<IPostDetail> => {
+  loader: async ({ params }):Promise<PostLoaderData> => {
     const response = await strapiAPI.posts.getPostsBySlug(params.slug)
-   
-    return response.data[0]
+
+    const siteUrl = process.env.RAILWAY_PUBLIC_DOMAIN
+      ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+      : 'http://localhost:3000'
+
+    return {
+      post: response.data[0],
+      siteUrl,
+      slug: params.slug,
+    }
   },
 
   head: ({ loaderData }) => {
-    const post = loaderData
+    const post = loaderData?.post
     const seo = post?.seo
-    const baseURL = `https://${process.env.RAILWAY_PUBLIC_DOMAIN ?? 'localhost:3000'}`
-    const url = `${baseURL}posts/${post?.slug}`
+
+    const baseUrl = loaderData?.siteUrl
+    const slug = loaderData?.slug
+
+    const fullUrl = `${baseUrl}/posts/${slug}`
+    
+    
+    
+    
+    
 
     const image =
       seo?.ogimage?.url ??
@@ -22,7 +46,7 @@ export const Route = createFileRoute('/posts/$slug')({
 
     return {
       meta: [
-        { title: seo?.title ?? post?.title },
+        { title: seo?.title ?? post?.title,},
 
         {
           name: 'description',
@@ -48,7 +72,7 @@ export const Route = createFileRoute('/posts/$slug')({
         },
         {
           property: 'og:url',
-          content: url,
+          content: fullUrl,
         },
 
         // Twitter
@@ -80,8 +104,8 @@ export const Route = createFileRoute('/posts/$slug')({
 
       links: [
         {
-          rel: 'canonical',
-          href: seo?.canonicalurl ?? url,
+           rel: 'canonical',
+           href: seo?.canonicalurl ?? fullUrl,
         },
       ],
     }
@@ -92,6 +116,6 @@ export const Route = createFileRoute('/posts/$slug')({
 
 
 function PostDetailPage() {
-  const post  = Route.useLoaderData()
+  const { post }  = Route.useLoaderData()
   return <PostDetail {...post} />
 }
