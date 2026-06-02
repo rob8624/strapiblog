@@ -57,6 +57,11 @@
     },
     "reading_time": {
       "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "component": "settings.seo",
+      "repeatable": false
     }
   }
 }

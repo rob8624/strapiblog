@@ -97,6 +97,20 @@ export interface SettingsImageSettings extends Struct.ComponentSchema {
   };
 }
 
+export interface SettingsSeo extends Struct.ComponentSchema {
+  collectionName: 'components_settings_seos';
+  info: {
+    displayName: 'SEO';
+  };
+  attributes: {
+    canonicalurl: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    noindex: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    ogimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface UiFooter extends Struct.ComponentSchema {
   collectionName: 'components_ui_footers';
   info: {
@@ -194,6 +208,7 @@ declare module '@strapi/strapi' {
       'blocks.rich-text': BlocksRichText;
       'blocks.video': BlocksVideo;
       'settings.image-settings': SettingsImageSettings;
+      'settings.seo': SettingsSeo;
       'ui.footer': UiFooter;
       'ui.header': UiHeader;
       'ui.hero': UiHero;

@@ -19,12 +19,21 @@ export interface IPostDetail {
   categories?: Array<ICategory>
   author?: IAuthor
   reading_time?: string
+  seo?: ISEO
 }
 
 export interface ICategory {
   id: string 
   documentId: string 
   name : string
+}
+
+export interface ISEO {
+  title: string
+  description: string
+  ogimage: CloudinaryImage
+  canonicalurl: string
+  noindex: boolean
 }
 
 export function PostDetail(props: IPostDetail) {

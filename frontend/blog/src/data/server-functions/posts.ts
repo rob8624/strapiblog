@@ -103,6 +103,9 @@ export function getPostsBySlug(slug: string) {
     filters: { slug: { $eq: slug } },
     populate: {
       cover: true,
+      seo: {
+    populate: '*',
+  },
       categories: {
         fields: ['name']
       },
