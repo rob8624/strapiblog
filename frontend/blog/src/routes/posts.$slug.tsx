@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { strapiAPI } from '@/data/server-functions'
 import { PostDetail } from '@/components/custom/posts-detail'
 import { IPostDetail } from '@/components/custom/posts-detail'
-import { frontEndUrl } from '@/lib/utils'
+import { getServerSideUrl } from '@/lib/utils'
 
 
 type PostLoaderData = {
@@ -15,9 +15,7 @@ export const Route = createFileRoute('/posts/$slug')({
   loader: async ({ params }):Promise<PostLoaderData> => {
     const response = await strapiAPI.posts.getPostsBySlug(params.slug)
 
-    const siteUrl = process.env.RAILWAY_PUBLIC_DOMAIN
-      ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
-      : 'http://localhost:3000'
+    const siteUrl = await getServerSideUrl()
 
     return {
       post: response.data[0],

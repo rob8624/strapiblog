@@ -37,6 +37,9 @@ export function formatDate(date: any) {
 }
 
 
-export const frontEndUrl = process.env.RAILWAY_PUBLIC_DOMAIN
-  ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
-  : 'http://localhost:3000'
+export const getFrontEndUrl = () =>
+  process.env.RAILWAY_PUBLIC_DOMAIN
+    ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+    : 'http://localhost:3000'
+
+export const getServerSideUrl = createServerFn().handler(() => getFrontEndUrl())
